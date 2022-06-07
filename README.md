@@ -19,13 +19,13 @@ C++ Inference example for Deep Learning Framework
 # 3.Supported Framework
 Currently, it's supports Linux and Android.
 
-[ ] Tensorflow
-[ ] MXNet
-[x] TFLite
-[x] NCNN
-[x] MNN
-[ ] onnxruntime
-[ ] OpenCV
+- [ ] Tensorflow
+- [ ] MXNet
+- [x] TFLite
+- [x] NCNN
+- [x] MNN
+- [ ] onnxruntime
+- [ ] OpenCV
 
 
 
