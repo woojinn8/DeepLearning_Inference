@@ -1,6 +1,6 @@
 # Introduction
 ---
-- C++ Inference example for Deep Learning Framework
+C++ Inference example for Deep Learning Framework
 
 # 1. Requirement
 ---
@@ -15,9 +15,9 @@
 2. In order to link the prebuilt libs, you need to export DeepLearning_Inference/prebuilt to LD_LIBRARY_PATH
 3. Build inference code using shell scripts.
   - Linux build
-  `sh build_linux.sh`
+	- `sh build_linux.sh`
   - Android build
-  `sh build_android.sh`
+	- `sh build_android.sh`
 
 # 3.Supported Framework
 ---
