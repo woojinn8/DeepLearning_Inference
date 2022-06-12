@@ -18,6 +18,7 @@ C++ Inference example for Deep Learning Framework
 |MNN|-|-|
 |NCNN|-|-|
 |OpenCV|3.4.16|-|
+
  
 2. Build inference code using shell scripts.
   - Linux build
