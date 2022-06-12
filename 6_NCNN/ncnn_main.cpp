@@ -14,104 +14,6 @@
 
 #define VULKAN_BUILD
 
-std::string log_save_path = "./";
-
-void get_localtime(std::string *t_curr, bool is_logging)
-{
-    time_t curTime = time(NULL);
-    struct tm *pLocal = localtime(&curTime);
-
-    std::string str_year = std::to_string(pLocal->tm_year + 1900);
-    std::string str_month = std::to_string(pLocal->tm_mon + 1);
-    if (str_month.size() < 2)
-        str_month = "0" + str_month;
-    std::string str_day = std::to_string(pLocal->tm_mday);
-    if (str_day.size() < 2)
-        str_day = "0" + str_day;
-
-    std::string str_hour = std::to_string(pLocal->tm_hour);
-    if (str_hour.size() < 2)
-        str_hour = "0" + str_hour;
-
-    std::string str_min = std::to_string(pLocal->tm_min);
-    if (str_min.size() < 2)
-        str_min = "0" + str_min;
-
-    std::string str_sec = std::to_string(pLocal->tm_sec);
-    if (str_sec.size() < 2)
-        str_sec = "0" + str_sec;
-
-    if (is_logging)
-    {
-        str_min = "00";
-        str_sec = "00";
-    }
-
-    *t_curr = str_year + str_month + str_day + "_" + str_hour + str_min + str_sec;
-}
-
-void Logging_csv(const std::string fmt, ...)
-{
-    try
-    {
-        int is_path = access(log_save_path.c_str(), F_OK);
-
-        // is connect
-        if (is_path == 0) //< 0)
-        {
-            int size = ((int)fmt.size()) * 2;
-            std::string message;
-            va_list ap;
-            while (1)
-            {
-                message.resize(size);
-                va_start(ap, fmt);
-                int n = vsnprintf((char *)message.data(), size, fmt.c_str(), ap);
-                va_end(ap);
-                if (n > -1 && n < size)
-                {
-                    message.resize(n);
-                    break;
-                }
-                if (n > -1)
-                    size = n + 1;
-                else
-                    size *= 2;
-            }
-
-            std::string t_log;
-            get_localtime(&t_log, true);
-
-            std::string log_file_path = log_save_path + t_log + ".csv";
-
-            int is_log_file = access(log_file_path.c_str(), F_OK);
-
-            // is file
-            std::ofstream out_log;
-
-            if (is_log_file < 0)
-            {
-                out_log.open(log_file_path);
-            } //end is_file
-            else
-            {
-                out_log.open(log_file_path, std::ios_base::app);
-            }
-
-            // write message
-            out_log << message; // << ",";
-            out_log.close();
-        }
-    }
-    catch (int expn)
-    {
-        printf("        <<< S1 Utils >>> : Fail to Logging\n");
-    }
-
-} // end Logging_csv
-
-
-
 class ncnn_engine
 {
 public:
@@ -173,7 +75,6 @@ public:
         net.load_param_enc(model_param.c_str(), 6, "s1face");
         net.load_model_enc(model_bin.c_str(), 6, "s1face");
 
-        Logging_csv("%s\n", "Cut");
 
         return true;
     }
@@ -202,7 +103,7 @@ public:
 
         auto et = std::chrono::steady_clock::now();
 		std::chrono::duration<float> dt = et - st;
-		Logging_csv("%s,%f\n", "Inference_prepare", dt.count() * 1000.0);
+
 
         st = std::chrono::steady_clock::now();
         ex.input(input.c_str(), in);
@@ -212,7 +113,7 @@ public:
         
         et = std::chrono::steady_clock::now();
 		dt = et - st;
-		Logging_csv("%s,%f\n", "Inference_DO", dt.count() * 1000.0);
+		
 
         return true;
     }

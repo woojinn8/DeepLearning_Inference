@@ -5,7 +5,7 @@ OPTION (USE_ANDROID "Build for Android" OFF)
 
 # Basic Path Setting
 set(ATTRIBUTE PRIVATE)
-set(THIRD_PARTY ${CMAKE_CURRENT_LIST_DIR}/../3rdparty)
+set(THIRD_PARTY ${CMAKE_CURRENT_LIST_DIR}/../0_3rdparty)
 
 if(USE_ANDROID)
 set(BUILD_PATH ${CMAKE_CURRENT_LIST_DIR}/build_android)
@@ -22,21 +22,21 @@ endif()
 
 # NCNN Path Setting
 if(USE_ANDROID)
-set(NCNN_INC ${THIRD_PARTY}/my_new_ncnn/include/ncnn)
-set(NCNN_LIB ${THIRD_PARTY}/my_new_ncnn/lib/libncnn.so)
+set(NCNN_INC ${THIRD_PARTY}/ncnn/include/ncnn)
+set(NCNN_LIB ${THIRD_PARTY}/ncnn/libs/android_aarch64/libncnn.so)
 else()
-set(NCNN_INC ${THIRD_PARTY}/ncnn/install_linux/include/ncnn)
-set(NCNN_LIB ${THIRD_PARTY}/ncnn/install_linux/lib/libncnn.so)
+set(NCNN_INC ${THIRD_PARTY}/ncnn/include/ncnn)
+set(NCNN_LIB ${THIRD_PARTY}/ncnn/libs/linux_x64/libncnn.so)
 endif()
 
 
 # OpenCV Path Setting
 if(USE_ANDROID)
-set(OPENCV_INC ${THIRD_PARTY}/opencv/opencv_android/sdk/native/jni/include)
-set(OpenCV_LIBS ${THIRD_PARTY}/opencv/opencv_android/sdk/native/libs/arm64-v8a)
+set(OPENCV_INC ${THIRD_PARTY}/opencv/opencv_android_aarch64/sdk/native/jni/include)
+set(OpenCV_LIBS ${THIRD_PARTY}/opencv/opencv_android_aarch64/sdk/native/libs/arm64-v8a)
 else()
-set(OPENCV_INC ${THIRD_PARTY}/opencv/opencv_linux/include)
-set(OpenCV_LIBS ${THIRD_PARTY}/opencv/opencv_linux/lib)
+set(OPENCV_INC ${THIRD_PARTY}/opencv/opencv_linux_x64/include)
+set(OpenCV_LIBS ${THIRD_PARTY}/opencv/opencv_linux_x64/libs)
 endif()
 
 

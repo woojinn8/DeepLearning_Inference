@@ -3,7 +3,7 @@ mkdir bin_android
 cd bin_android
 
 rm CMakeCache.txt
-export ANDROID_NDK=/home/s1secom/Downloads/android-ndk-r21e-linux-x86_64/android-ndk-r21e
+export ANDROID_NDK=../../0_3rdparty/android-ndk-r21e-linux-x86_64
 cmake -DCMAKE_TOOLCHAIN_FILE="$ANDROID_NDK/build/cmake/android.toolchain.cmake"\
 	-DCMAKE_SYSTEM_NAME=Android \
  	-DCMAKE_SYSTEM_VERSION=21 \

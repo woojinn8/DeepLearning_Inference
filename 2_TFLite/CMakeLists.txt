@@ -5,7 +5,7 @@ OPTION (USE_ANDROID "Build for Android" OFF)
 
 # Basic Path Setting
 set(ATTRIBUTE PRIVATE)
-set(THIRD_PARTY ${CMAKE_CURRENT_LIST_DIR}/../../3rdparty)
+set(THIRD_PARTY ${CMAKE_CURRENT_LIST_DIR}/../0_3rdparty)
 
 if(USE_ANDROID)
 set(BUILD_PATH ${CMAKE_CURRENT_LIST_DIR}/build_android)
@@ -16,27 +16,27 @@ endif()
 
 # TFLITE Path Setting
 set(TFLITE_INC
-${THIRD_PARTY}/tflite
-${THIRD_PARTY}/tflite/tensorflow/lite/tools/make/downloads/flatbuffers/include
-${THIRD_PARTY}/tflite/tensorflow/lite/tools/make/downloads/absl
+${THIRD_PARTY}/tflite/include
+${THIRD_PARTY}/tflite/include/tensorflow/lite/tools/make/downloads/flatbuffers/include
+${THIRD_PARTY}/tflite/include/tensorflow/lite/tools/make/downloads/absl
 )
 
 if(USE_ANDROID)
-set(TFLITE_LIB ${THIRD_PARTY}/tflite/lib_android/libtensorflowlite.so)
-set(TFLITE_GPU_LIB ${THIRD_PARTY}/tflite/lib_android/libtensorflowlite_gpu_delegate.so)
+set(TFLITE_LIB ${THIRD_PARTY}/tflite/libs/android_aarch64/libtensorflowlite.so)
+set(TFLITE_GPU_LIB ${THIRD_PARTY}/tflite/libs/android_aarch64/libtensorflowlite_gpu_delegate.so)
 else()
-set(TFLITE_LIB ${THIRD_PARTY}/tflite/lib_linux/libtensorflowlite.so)
-set(TFLITE_GPU_LIB ${THIRD_PARTY}/tflite/lib_linux/libtensorflowlite_gpu_delegate.so)
+set(TFLITE_LIB ${THIRD_PARTY}/tflite/libs/linux_x64/libtensorflowlite.so)
+set(TFLITE_GPU_LIB ${THIRD_PARTY}/tflite/libs/linux_x64/libtensorflowlite_gpu_delegate.so)
 endif()
 
 
 # OpenCV Path Setting
 if(USE_ANDROID)
-set(OPENCV_INC ${THIRD_PARTY}/opencv/opencv_android/sdk/native/jni/include)
-set(OpenCV_LIBS ${THIRD_PARTY}/opencv/opencv_android/sdk/native/libs/arm64-v8a)
+set(OPENCV_INC ${THIRD_PARTY}/opencv/opencv_android_aarch64/sdk/native/jni/include)
+set(OpenCV_LIBS ${THIRD_PARTY}/opencv/opencv_android_aarch64/sdk/native/libs/arm64-v8a)
 else()
-set(OPENCV_INC ${THIRD_PARTY}/opencv/opencv_linux/include)
-set(OpenCV_LIBS ${THIRD_PARTY}/opencv/opencv_linux/lib)
+set(OPENCV_INC ${THIRD_PARTY}/opencv/opencv_linux_x64/include)
+set(OpenCV_LIBS ${THIRD_PARTY}/opencv/opencv_linux_x64/libs)
 endif()
 
 add_executable(TFLite_inference 

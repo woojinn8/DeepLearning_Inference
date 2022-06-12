@@ -5,7 +5,7 @@ OPTION (USE_ANDROID "Build for Android" OFF)
 
 # Basic Path Setting
 set(ATTRIBUTE PRIVATE)
-set(THIRD_PARTY ${CMAKE_CURRENT_LIST_DIR}/../3rdparty)
+set(THIRD_PARTY ${CMAKE_CURRENT_LIST_DIR}/../0_3rdparty)
 
 if(USE_ANDROID)
 set(BUILD_PATH ${CMAKE_CURRENT_LIST_DIR}/build_android)
@@ -16,31 +16,30 @@ endif()
 if(USE_ANDROID)
 set(CMAKE_EXE_LINKER_FLAGS    "-Wl,--as-needed, -fuse-ld=gold ${CMAKE_EXE_LINKER_FLAGS}")
 else()
-#set(CMAKE_EXE_LINKER_FLAGS    "-Wl,--as-needed ${CMAKE_EXE_LINKER_FLAGS}")
+set(CMAKE_EXE_LINKER_FLAGS    "-Wl,--as-needed ${CMAKE_EXE_LINKER_FLAGS}")
 endif()
 
 
 # MNN Path Setting
 set(MNN_INC ${THIRD_PARTY}/mnn/include)
 if(USE_ANDROID)
-set(MNN_LIB ${THIRD_PARTY}/mnn/lib_android/libMNN.so)
-set(MNN_VULKAN_LIB ${THIRD_PARTY}/mnn/lib_android/libMNN_Vulkan.so)
+set(MNN_LIB ${THIRD_PARTY}/mnn/libs/android_aarch64/libMNN.so)
+set(MNN_VULKAN_LIB ${THIRD_PARTY}/mnn/libs/android_aarch64/libMNN_Vulkan.so)
 else()
-set(MNN_LIB ${THIRD_PARTY}/mnn/lib_linux/libMNN.so)
-set(MNN_VULKAN_LIB ${THIRD_PARTY}/mnn/lib_linux/libMNN_Vulkan.so)
+set(MNN_LIB ${THIRD_PARTY}/mnn/libs/linux_x64/libMNN.so)
+set(MNN_VULKAN_LIB ${THIRD_PARTY}/mnn/libs/linux_x64/libMNN_Vulkan.so)
 endif()
 
 set(VULKAN_INC ${THIRD_PARTY}/mnn/vulkan)
 
 # OpenCV Path Setting
 if(USE_ANDROID)
-set(OPENCV_INC ${THIRD_PARTY}/opencv/opencv_android/sdk/native/jni/include)
-set(OpenCV_LIBS ${THIRD_PARTY}/opencv/opencv_android/sdk/native/libs/arm64-v8a)
+set(OPENCV_INC ${THIRD_PARTY}/opencv/opencv_android_aarch64/sdk/native/jni/include)
+set(OpenCV_LIBS ${THIRD_PARTY}/opencv/opencv_android_aarch64/sdk/native/libs/arm64-v8a)
 else()
-set(OPENCV_INC ${THIRD_PARTY}/opencv/opencv_linux/include)
-set(OpenCV_LIBS ${THIRD_PARTY}/opencv/opencv_linux/lib)
+set(OPENCV_INC ${THIRD_PARTY}/opencv/opencv_linux_x64/include)
+set(OpenCV_LIBS ${THIRD_PARTY}/opencv/opencv_linux_x64/libs)
 endif()
-
 
 add_executable(mnn_inference 
 ${CMAKE_CURRENT_LIST_DIR}/mnn_inference.cpp

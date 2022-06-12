@@ -2,15 +2,24 @@
 C++ Inference example for Deep Learning Framework
 
 # 1. Requirement
-- CMake
-- OpenCV
-- NDK (for android)
+- CMake(v3.16.3 is used)
+- OpenCV(v3.4.16 is used)
+- NDK (r21e is used)
 
 
 # 2.Quick Start
 1. Download prebuild library which you want to use.
-2. In order to link the prebuilt libs, you need to export DeepLearning_Inference/prebuilt to LD_LIBRARY_PATH
-3. Build inference code using shell scripts.
+|Framework|Download Link|
+|:---:|:---:|
+|Tensorflow|[download]()|
+|TFLite|[download]()|
+|Pytorch|[download]()|
+|MXNet|[download]()|
+|MNN|[download]()|
+|NCNN|[download]()|
+|OpenCV|[download]()|
+ 
+2. Build inference code using shell scripts.
   - Linux build
 	- `sh build_linux.sh`
   - Android build
