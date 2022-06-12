@@ -8,7 +8,8 @@ C++ Inference example for Deep Learning Framework
 
 
 # 2.Quick Start
-1. Download prebuild library which you want to use.
+1. Download prebuild library which you want to use
+
 |Framework|Version|Download Link|
 |:---:|:---:|:---:|
 |Tensorflow|2.6.0|download|
@@ -47,6 +48,7 @@ C++ Inference example for Deep Learning Framework
  	- You may need a version newer than 3.1 to use DNN module
 
 ## Status
+
 |Framework|Linux|Android|Windows|
 |:---:|:---:|:---:|:---:|
 |Tensorflow|:white_check_mark:|-|:white_check_mark:|
