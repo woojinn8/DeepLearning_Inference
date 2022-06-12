@@ -16,17 +16,34 @@ C++ Inference example for Deep Learning Framework
   - Android build
 	- `sh build_android.sh`
 
-# 3.Supported Framework
-Currently, it's supports Linux and Android.
+# 3.Supported
 
-- [ ] Tensorflow
-- [ ] MXNet
-- [x] TFLite
-- [x] NCNN
-- [x] MNN
-- [ ] onnxruntime
-- [ ] OpenCV
+## Targeet Platform
 
+ - Linux(x64)
+ - Android(aarch64)
+ - Windows(x64)
 
+## Target Framework
+ - Tensorflow
+ 	- You may need a version newer than 2.6
+ - TFLite
+	- CPU and GPU are supported
+	- Edge TPU, XNNPACK and NNAPI will updated soon
+ - Pytorch
+ - MXNet
+ - MNN
+ - NCNN
+ - Opencv
+ 	- You may need a version newer than 3.1 to use DNN module
 
+|Framework|Linux|Android|Windows|
+|:---:|:---:|:---:|:---:|
+|Tensorflow|:white_check_mark:|-|:heavy_check_mark:|
+|TFLite|:heavy_check_mark:|:heavy_check_mark:|-|
+|Pytorch|-|-|-|
+|MXNet|:white_check_mark:|-|:heavy_check_mark:|
+|MNN|:heavy_check_mark:|:heavy_check_mark:|:white_check_mark:|
+|NCNN|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|
+|OpenCV|:heavy_check_mark:|-|:heavy_check_mark:|
 
