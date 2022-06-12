@@ -19,10 +19,8 @@ C++ Inference example for Deep Learning Framework
 # 3.Supported
 
 ## Targeet Platform
-
  - Linux(x64)
  - Android(aarch64)
- - Windows(x64)
 
 ## Target Framework
  - Tensorflow
@@ -37,13 +35,14 @@ C++ Inference example for Deep Learning Framework
  - Opencv
  	- You may need a version newer than 3.1 to use DNN module
 
+## Status
 |Framework|Linux|Android|Windows|
 |:---:|:---:|:---:|:---:|
-|Tensorflow|:white_check_mark:|-|:heavy_check_mark:|
+|Tensorflow|:white_check_mark:|-|:white_check_mark:|
 |TFLite|:heavy_check_mark:|:heavy_check_mark:|-|
 |Pytorch|-|-|-|
-|MXNet|:white_check_mark:|-|:heavy_check_mark:|
+|MXNet|:white_check_mark:|-|:white_check_mark:|
 |MNN|:heavy_check_mark:|:heavy_check_mark:|:white_check_mark:|
-|NCNN|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|
+|NCNN|:heavy_check_mark:|:heavy_check_mark:|:white_check_mark:|
 |OpenCV|:heavy_check_mark:|-|:heavy_check_mark:|
 
