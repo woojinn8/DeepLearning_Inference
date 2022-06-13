@@ -37,7 +37,7 @@ private:
 
     float pixel_mean_mask[3] = {127.5, 127.5, 127.5};
     float pixel_std_mask[3] = {1.0/128.0, 1.0/128.0, 1.0/128.0};
-    int input_size = 128;
+    int input_size = 112;
 };
 
 
@@ -113,7 +113,7 @@ int mnn_engine::predict(cv::Mat image)
 
 	// 04 Check result
 	int result = -1;
-	if (res.at<float>(0, 0) < res.at<float>(0, 1)) // is-half?
+	if (res.at<float>(0, 0) < res.at<float>(0, 1)) 
 		result = 1;
 	else
 		result = 0;
@@ -127,20 +127,29 @@ int main(int argc, char** argv)
 {
 
     std::cout << "1. model_file" << std::endl;
-    std::cout << "2. use_gpu" << std::endl;
-    std::cout << "3. num_thread" << std::endl;
-
+	std::cout << "2. img_path" << std::endl;
+    std::cout << "3. use_gpu" << std::endl;
+    std::cout << "4. num_thread" << std::endl;
 
     auto handle = dlopen("libMNN_Vulkan.so", RTLD_NOW);
 
     mnn_engine engine;
 
     std::string model_file = argv[1];
-    int use_gpu = std::atoi(argv[2]);
-    int num_thread = std::atoi(argv[3]);
+	std::string img_path = argv[2];
+	cv::Mat img = cv::imread(img_path);
+	if(img.empty())
+	{
+		std::cout << "Fail to load image" << std::endl;
+		return -1;
+	}
+
+    int use_gpu = std::atoi(argv[3]);
+    int num_thread = std::atoi(argv[4]);
 
 
     bool init_result = engine.Initialize_mnn(model_file, use_gpu, num_thread, 0.5);
-    int result = engine.predict(cv::Mat::zeros(cv::Size(128, 128), CV_8UC3));
+    int result = engine.predict(cv::Mat::zeros(cv::Size(112, 112), CV_8UC3));
 
+	return 0;
 }
